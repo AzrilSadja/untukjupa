@@ -37,29 +37,29 @@
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
-
+        
         .pulse {
             animation: pulse 2s infinite alternate;
         }
-
+        
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.4); }
             100% { transform: scale(1.05); box-shadow: 0 0 20px 10px rgba(255, 105, 180, 0); }
         }
-
+        
         .float-in {
             animation: floatIn 1.5s ease-out forwards;
         }
-
+        
         @keyframes floatIn {
             0% { transform: translateY(50px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
-
+        
         .twinkle {
             animation: twinkle 3s infinite;
         }
-
+        
         @keyframes twinkle {
             0% { opacity: 0.5; }
             50% { opacity: 1; }
@@ -73,12 +73,127 @@
             background-color: #f00;
             opacity: 0;
         }
+        
+        .photo-frame {
+            border: 8px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+        }
+        
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        .love-letter {
+            background: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            border-left: 5px solid #f9a8d4;
+            transform: perspective(500px) rotateY(5deg);
+            transition: all 0.5s ease;
+        }
+        
+        .love-letter:hover {
+            transform: perspective(500px) rotateY(0deg);
+        }
+        
+        .message-bubble {
+            position: relative;
+            border-radius: 20px;
+        }
+        
+        .message-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50px;
+            border-width: 15px 15px 0;
+            border-style: solid;
+            border-color: #fce7f3 transparent;
+            display: block;
+            width: 0;
+        }
+        
+        @keyframes slideInRight {
+            0% { transform: translateX(100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 1s ease-out forwards;
+        }
+        
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background: #f9a8d4;
+            border-radius: 5px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .envelope:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 100px solid #f472b6;
+            transform-origin: top;
+            transform: rotateX(0deg);
+            transition: all 0.3s ease 0.3s;
+            z-index: 3;
+        }
+        
+        .envelope.open:before {
+            transform: rotateX(180deg);
+        }
+        
+        .envelope .letter {
+            position: absolute;
+            bottom: 0;
+            width: 90%;
+            height: 90%;
+            background: white;
+            left: 5%;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 2;
+            padding: 20px;
+            transform: translateY(100%);
+        }
+        
+        .envelope.open .letter {
+            transform: translateY(-50px);
+            transition-delay: 0.3s;
+        }
+        
+        .envelope .heart-inside {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            color: #ec4899;
+            z-index: 1;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .envelope.open .heart-inside {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.5);
+        }
     </style>
 </head>
-<body class="flex items-center justify-center p-4">
-    <div class="max-w-2xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+<body class="flex items-center justify-center p-4 py-10">
+    <div class="max-w-4xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
         <!-- Header with flowers -->
-        <div class="relative bg-pink-100 py-8 px-6 text-center">
+        <div class="relative bg-gradient-to-r from-pink-100 to-purple-100 py-10 px-6 text-center">
             <div class="absolute top-0 left-0 w-full h-full opacity-20">
                 <div class="absolute top-4 left-10 text-pink-300 text-4xl twinkle" style="animation-delay: 0.2s;"><i class="fas fa-heart"></i></div>
                 <div class="absolute top-8 right-12 text-pink-300 text-3xl twinkle" style="animation-delay: 0.4s;"><i class="fas fa-heart"></i></div>
@@ -86,49 +201,96 @@
                 <div class="absolute bottom-10 right-20 text-pink-300 text-5xl twinkle" style="animation-delay: 0.8s;"><i class="fas fa-heart"></i></div>
             </div>
             <h1 class="text-4xl md:text-5xl font-bold text-pink-600 relative z-10 float-in">
-                Untuk <span class="text-purple-600">Ina Amaliya Zulfa</span>
+                Untuk <span class="text-purple-600 animate-pulse">Ina Amaliya Zulfa</span>
             </h1>
             <div class="mt-4 text-pink-500 text-xl relative z-10">
-                <i class="fas fa-heart heart"></i>  <i class="fas fa-heart heart"></i>
+                <i class="fas fa-heart heart"></i>  <i class="fas fa-heart heart" style="animation-delay: 0.5s;"></i>  <i class="fas fa-heart heart" style="animation-delay: 1s;"></i>
             </div>
         </div>
         
         <!-- Main content -->
         <div class="p-6 md:p-10">
-            <div class="bg-pink-50 rounded-xl p-6 mb-8 relative overflow-hidden float-in" style="animation-delay: 0.3s;">
-                <div class="absolute top-0 left-0 w-full h-full opacity-10">
-                    <div class="absolute top-0 left-10 text-pink-300 text-6xl"><i class="fas fa-heart"></i></div>
-                    <div class="absolute bottom-0 right-10 text-pink-300 text-6xl"><i class="fas fa-heart"></i></div>
+            <!-- Photo and letter section -->
+            <div class="flex flex-col md:flex-row gap-8 mb-10">
+                <div class="w-full md:w-1/3 flex justify-center">
+                    <div class="photo-frame bg-white p-2 rounded-lg max-w-xs">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                             alt="Beautiful woman" class="w-full h-auto rounded">
+                        <div class="text-center mt-2 text-sm text-pink-600">Ina Amaliya Zulfa</div>
+                    </div>
                 </div>
-                <p class="text-gray-700 text-lg leading-relaxed relative z-10">
-                    <span class="block text-center text-2xl font-semibold text-pink-600 mb-4">Teruntuk, Ina Amaliya Zulfa,</span>
-                    
-                    Setiap kali aku melihatmu, hatiku berdebar lebih kencang dari biasanya. Senyummu seperti sinar matahari yang menghangatkan hari-hariku. Cara kamu berbicara, tertawa, dan menjadi dirimu sendiri membuatku semakin jatuh cinta.
-                    
-                    <span class="block my-4 text-center text-xl text-purple-600 font-medium">Aku ingin bertanya...</span>
-                    
-                    Maukah kamu memberiku kesempatan untuk membuatmu bahagia? Aku berjanji akan selalu ada untukmu, dalam suka maupun duka.
-                </p>
+                <div class="w-full md:w-2/3">
+                    <div class="love-letter bg-pink-50 p-6 rounded-lg h-full">
+                        <p class="text-gray-700 text-lg leading-relaxed">
+                            <span class="block text-center text-2xl font-semibold text-pink-600 mb-4">Teruntuk, Ina Amaliya Zulfa,</span>
+                            
+                            Setiap kali aku melihatmu, dunia seakan berhenti sejenak. Senyummu seperti mentari pagi yang menghangatkan jiwa. Tatapan matamu bagai bintang di langit malam yang menerangi kegelapan. Cara kamu berbicara, tertawa, dan menjadi dirimu sendiri membuatku semakin jatuh cinta setiap harinya.
+                            
+                            <span class="block my-4 text-center text-xl text-purple-600 font-medium">Aku ingin bertanya...</span>
+                            
+                            Maukah kamu memberiku kesempatan untuk menjadi bagian dari hidupmu? Aku berjanji akan selalu ada untukmu, dalam suka maupun duka, dalam tawa maupun air mata. Bersamamu, aku ingin membangun kisah cinta yang indah.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Envelope animation -->
+            <div class="flex justify-center mb-10">
+                <div class="envelope" id="envelope" onclick="toggleEnvelope()">
+                    <div class="heart-inside"><i class="fas fa-heart"></i></div>
+                    <div class="letter">
+                        <p class="text-sm text-gray-700">Untuk Jupa,<br>Dari seseorang yang sangat mencintaimu  ❤️</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Message bubble -->
+            <div class="bg-pink-100 p-6 rounded-2xl mb-8 message-bubble slide-in-right" style="animation-delay: 0.5s;">
+                <p class="text-pink-800">"Cinta itu seperti kupu-kupu, tambah dikejar tambah lari. Tapi kalau dibiarkan terbang, dia akan datang di saat kita tidak menyadarinya."</p>
             </div>
             
             <!-- Buttons -->
             <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10" id="buttons">
-                <button onclick="accept()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+                <button onclick="accept()" class="bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 pulse">
                     <i class="fas fa-heart"></i> Terima Perasaanku
                 </button>
-                <button onclick="reject()" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+                <button onclick="reject()" class="bg-gradient-to-r from-red-400 to-red-600 hover:from-red-500 hover:to-red-700 text-white font-bold py-4 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
                     <i class="fas fa-heart-broken"></i> Tolak dengan Baik
                 </button>
             </div>
             
             <!-- Acceptance message (hidden initially) -->
             <div id="acceptedMessage" class="hidden text-center mt-8 p-6 bg-green-50 rounded-xl animate-bounce">
-                <h2 class="text-3xl font-bold text-green-600 mb-4">TERIMA KASIH INDAH!</h2>
-                <p class="text-green-700 text-lg">Aku janji akan menjadi yang terbaik untukmu. Ini awal dari kisah indah kita ❤️</p>
+                <h2 class="text-3xl font-bold text-green-600 mb-4">TERIMA KASIH JUPAA!</h2>
+                <p class="text-green-700 text-lg">Aku janji akan menjadi laki-laki yang terbaik untukmu. Ini awal dari kisah indah kita ❤️</p>
                 <div class="mt-4 text-4xl text-green-500">
                     <i class="fas fa-heart"></i>
                     <i class="fas fa-heart mx-4"></i>
                     <i class="fas fa-heart"></i>
+                </div>
+                <div class="mt-6">
+                    <button onclick="showDateIdeas()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-full text-sm">
+                        Lihat Ide Kencan Kami
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Date ideas (hidden initially) -->
+            <div id="dateIdeas" class="hidden mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow-md border border-pink-100 transform hover:scale-105 transition-all">
+                    <div class="text-pink-500 text-2xl mb-2"><i class="fas fa-utensils"></i></div>
+                    <h3 class="font-bold text-pink-600">Makan Malam Romantis</h3>
+                    <p class="text-sm text-gray-600 mt-1">Di restoran dengan pemandangan kota</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md border border-pink-100 transform hover:scale-105 transition-all">
+                    <div class="text-pink-500 text-2xl mb-2"><i class="fas fa-film"></i></div>
+                    <h3 class="font-bold text-pink-600">Nonton Film Bareng</h3>
+                    <p class="text-sm text-gray-600 mt-1">Film romantis dengan popcorn dan selimut</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md border border-pink-100 transform hover:scale-105 transition-all">
+                    <div class="text-pink-500 text-2xl mb-2"><i class="fas fa-umbrella-beach"></i></div>
+                    <h3 class="font-bold text-pink-600">Liburan Akhir Pekan</h3>
+                    <p class="text-sm text-gray-600 mt-1">Ke pantai atau penginapan cozy</p>
                 </div>
             </div>
             
@@ -143,10 +305,16 @@
         </div>
         
         <!-- Footer -->
-        <div class="bg-pink-100 py-4 text-center text-pink-600">
-            <p>Dibuat dengan <i class="fas fa-heart text-red-500"></i> untuk Ina Amaliya Zulfa</p>
+        <div class="bg-gradient-to-r from-pink-100 to-purple-100 py-6 text-center text-pink-600">
+            <p class="text-sm">Dibuat dengan <i class="fas fa-heart text-red-500 animate-pulse"></i> untuk Ina Amaliya Zulfa</p>
         </div>
     </div>
+
+    <!-- Hidden audio element for the love song -->
+    <audio id="loveSong" preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
         function accept() {
@@ -154,6 +322,12 @@
             document.getElementById('acceptedMessage').classList.remove('hidden');
             createConfetti();
             playSound('accept');
+            
+            // Play love song
+            const loveSong = document.getElementById('loveSong');
+            loveSong.volume = 0.5; // Set volume to 50%
+            loveSong.loop = true; // Loop the song
+            loveSong.play();
         }
         
         function reject() {
@@ -162,13 +336,27 @@
             playSound('reject');
         }
         
+        function toggleEnvelope() {
+            const envelope = document.getElementById('envelope');
+            envelope.classList.toggle('open');
+        }
+        
+        function showDateIdeas() {
+            document.getElementById('dateIdeas').classList.remove('hidden');
+            document.getElementById('dateIdeas').scrollIntoView({ behavior: 'smooth' });
+        }
+        
         function createConfetti() {
             const colors = ['#ff0000', '#ff00aa', '#ff6600', '#ffcc00', '#00ff00', '#0099ff', '#9900ff'];
             
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 150; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
                 confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = -20 + 'px';
+                confetti.style.width = 5 + Math.random() * 10 + 'px';
+                confetti.style.height = 5 + Math.random() * 10 + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
                 confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 confetti.style.opacity = '0.8';
                 document.body.appendChild(confetti);
@@ -208,6 +396,24 @@
                 : 'https://www.soundjay.com/mechanical/sounds/boing-1.mp3';
             audio.play();
         }
+        
+        // Add floating hearts occasionally
+        function addFloatingHearts() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '<i class="fas fa-heart text-pink-300"></i>';
+            heart.className = 'absolute text-2xl opacity-70';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = -30 + 'px';
+            heart.style.animation = `floating ${3 + Math.random() * 4}s linear forwards`;
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+        
+        // Add floating hearts every few seconds
+        setInterval(addFloatingHearts, 2000);
     </script>
 </body>
 </html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Ina Amaliya Zulfa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .heart {
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.4); }
+            100% { transform: scale(1.05); box-shadow: 0 0 20px 10px rgba(255, 105, 180, 0); }
+        }
+
+        .float-in {
+            animation: floatIn 1.5s ease-out forwards;
+        }
+
+        @keyframes floatIn {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .twinkle {
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4">
+    <div class="max-w-2xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+        <!-- Header with flowers -->
+        <div class="relative bg-pink-100 py-8 px-6 text-center">
+            <div class="absolute top-0 left-0 w-full h-full opacity-20">
+                <div class="absolute top-4 left-10 text-pink-300 text-4xl twinkle" style="animation-delay: 0.2s;"><i class="fas fa-heart"></i></div>
+                <div class="absolute top-8 right-12 text-pink-300 text-3xl twinkle" style="animation-delay: 0.4s;"><i class="fas fa-heart"></i></div>
+                <div class="absolute bottom-6 left-16 text-pink-300 text-2xl twinkle" style="animation-delay: 0.6s;"><i class="fas fa-heart"></i></div>
+                <div class="absolute bottom-10 right-20 text-pink-300 text-5xl twinkle" style="animation-delay: 0.8s;"><i class="fas fa-heart"></i></div>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-pink-600 relative z-10 float-in">
+                Untuk <span class="text-purple-600">Ina Amaliya Zulfa</span>
+            </h1>
+            <div class="mt-4 text-pink-500 text-xl relative z-10">
+                <i class="fas fa-heart heart"></i>  <i class="fas fa-heart heart"></i>
+            </div>
+        </div>
+        
+        <!-- Main content -->
+        <div class="p-6 md:p-10">
+            <div class="bg-pink-50 rounded-xl p-6 mb-8 relative overflow-hidden float-in" style="animation-delay: 0.3s;">
+                <div class="absolute top-0 left-0 w-full h-full opacity-10">
+                    <div class="absolute top-0 left-10 text-pink-300 text-6xl"><i class="fas fa-heart"></i></div>
+                    <div class="absolute bottom-0 right-10 text-pink-300 text-6xl"><i class="fas fa-heart"></i></div>
+                </div>
+                <p class="text-gray-700 text-lg leading-relaxed relative z-10">
+                    <span class="block text-center text-2xl font-semibold text-pink-600 mb-4">Teruntuk, Ina Amaliya Zulfa,</span>
+                    
+                    Setiap kali aku melihatmu, hatiku berdebar lebih kencang dari biasanya. Senyummu seperti sinar matahari yang menghangatkan hari-hariku. Cara kamu berbicara, tertawa, dan menjadi dirimu sendiri membuatku semakin jatuh cinta.
+                    
+                    <span class="block my-4 text-center text-xl text-purple-600 font-medium">Aku ingin bertanya...</span>
+                    
+                    Maukah kamu memberiku kesempatan untuk membuatmu bahagia? Aku berjanji akan selalu ada untukmu, dalam suka maupun duka.
+                </p>
+            </div>
+            
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10" id="buttons">
+                <button onclick="accept()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+                    <i class="fas fa-heart"></i> Terima Perasaanku
+                </button>
+                <button onclick="reject()" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
+                    <i class="fas fa-heart-broken"></i> Tolak dengan Baik
+                </button>
+            </div>
+            
+            <!-- Acceptance message (hidden initially) -->
+            <div id="acceptedMessage" class="hidden text-center mt-8 p-6 bg-green-50 rounded-xl animate-bounce">
+                <h2 class="text-3xl font-bold text-green-600 mb-4">TERIMA KASIH INDAH!</h2>
+                <p class="text-green-700 text-lg">Aku janji akan menjadi yang terbaik untukmu. Ini awal dari kisah indah kita ❤️</p>
+                <div class="mt-4 text-4xl text-green-500">
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart mx-4"></i>
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+            
+            <!-- Rejection message (hidden initially) -->
+            <div id="rejectedMessage" class="hidden text-center mt-8 p-6 bg-red-50 rounded-xl">
+                <h2 class="text-2xl font-bold text-red-600 mb-4">Terima kasih atas kejujuranmu...</h2>
+                <p class="text-red-700">Aku menghargai keputusanmu. Semoga kita tetap bisa berteman baik.</p>
+                <div class="mt-4 text-4xl text-red-300">
+                    <i class="fas fa-heart-broken"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="bg-pink-100 py-4 text-center text-pink-600">
+            <p>Dibuat dengan <i class="fas fa-heart text-red-500"></i> untuk Ina Amaliya Zulfa</p>
+        </div>
+    </div>
+
+    <script>
+        function accept() {
+            document.getElementById('buttons').classList.add('hidden');
+            document.getElementById('acceptedMessage').classList.remove('hidden');
+            createConfetti();
+            playSound('accept');
+        }
+        
+        function reject() {
+            document.getElementById('buttons').classList.add('hidden');
+            document.getElementById('rejectedMessage').classList.remove('hidden');
+            playSound('reject');
+        }
+        
+        function createConfetti() {
+            const colors = ['#ff0000', '#ff00aa', '#ff6600', '#ffcc00', '#00ff00', '#0099ff', '#9900ff'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.opacity = '0.8';
+                document.body.appendChild(confetti);
+                
+                animateConfetti(confetti);
+            }
+        }
+        
+        function animateConfetti(element) {
+            let pos = 0;
+            let angle = Math.random() * 360;
+            let velocity = 2 + Math.random() * 3;
+            let spin = Math.random() > 0.5 ? 1 : -1;
+            let spinSpeed = 1 + Math.random() * 3;
+            
+            const interval = setInterval(() => {
+                pos += 0.1;
+                angle += spin * spinSpeed;
+                
+                const x = Math.cos(angle * Math.PI / 180) * velocity;
+                const y = Math.sin(angle * Math.PI / 180) * velocity + pos;
+                
+                element.style.transform = `translate(${x}px, ${y}px) rotate(${angle}deg)`;
+                element.style.opacity = (1 - pos / 100).toString();
+                
+                if (pos > 100) {
+                    clearInterval(interval);
+                    element.remove();
+                }
+            }, 20);
+        }
+        
+        function playSound(type) {
+            const audio = new Audio();
+            audio.src = type === 'accept' 
+                ? 'https://www.soundjay.com/mechanical/sounds/magic-chime-01.mp3' 
+                : 'https://www.soundjay.com/mechanical/sounds/boing-1.mp3';
+            audio.play();
+        }
+    </script>
+</body>
+</html>
